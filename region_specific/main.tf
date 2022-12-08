@@ -275,7 +275,7 @@ module "cloudtrail_security_trail_enabled_check_config_rule" {
   config_logs_bucket      = local.config_logs_bucket
 }
 
-# AWSS-30. Commented out due to Auction.com not using SSM as of Nov/16/22
+
 # module "ec2_systems_manager_managed_check" {
 #   count = var.create_ec2_systems_manager_managed_check_config_rule ? 1 : 0
 
