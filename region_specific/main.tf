@@ -9,7 +9,7 @@ locals {
   account_id        = data.aws_caller_identity.current.account_id
   account_last_four = substr(local.account_id, 8, 12)
 
-  organization_log_group = "aws-cloudtrail-logs-039549626352-3b7c9b81"
+  organization_log_group = "loggroupname"
 
   config_logs_bucket         = "config-bucket-${local.account_id}"
   elb_config_logs_bucket     = "elblogs-${local.account_last_four}-${local.region_shorthand}"
@@ -39,7 +39,6 @@ module "ssm_documents" {
 module "rule_and_remediation_lambdas" {
   source = "./lambda"
 
-  # AWSS-269
   # backup_vault_name = module.config_rds_emergency_backup_vault.name
 }
 
