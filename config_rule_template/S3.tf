@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "terraform-state" {
   tags = {
     Name        = "adc-sre-terraform-state-${var.region_shortcode}-${var.account_prefix}"
     Environment = var.environment
-    Owner       = "sre@auction.com"
+    Owner       = "email"
     Department  = "SRE"
   }
 }
