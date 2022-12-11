@@ -7,7 +7,7 @@ module "cloudtrail" {
   trail_name           = "testingpolicyfortestest"
   log_group_name       = "testingpolicyfortestest"
   region               = "us-west-2"
-  account_id           = "955305841756"
+  account_id           = "ID"
   tags = {
     "Workload Name"         = "" #Update with tag name (add confluence link to mandatory tags)
     "Application Name"      = "" #Update with tag name (add confluence link to mandatory tags)
