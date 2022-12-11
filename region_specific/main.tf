@@ -14,7 +14,7 @@ locals {
   config_logs_bucket         = "config-bucket-${local.account_id}"
   elb_config_logs_bucket     = "elblogs-${local.account_last_four}-${local.region_shorthand}"
   automation_assume_role_arn = data.aws_iam_role.automation_assume_role.arn
-  config_role_name           = "AWSServiceRoleForConfig"
+  config_role_name           = "CONFIG-ROLE"
 }
 
 #################
