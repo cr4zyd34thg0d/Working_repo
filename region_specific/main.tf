@@ -481,7 +481,7 @@ module "sns_topic" {
   sns_name   = "auction-config-rule-notifications-${local.account_id}"
   account_id = local.account_id
   protocol   = "email"
-  email      = ["SRE-Alerts@auction.com", "it-secops@auction.com"] #Security Email address
+  email      = ["Email"] #Security Email address
 }
 
 module "sns_rds_topic" {
@@ -489,7 +489,7 @@ module "sns_rds_topic" {
   sns_name   = "auction-config-rule-rds-notifications-${local.account_id}"
   account_id = local.account_id
   protocol   = "email"
-  email      = ["SRE-Alerts@auction.com", "it-secops@auction.com", "DL-IT-OPS-DBA@auction.com"] #Security Email address
+  email      = ["Email"] #Security Email address
 }
 
 # Eventbridge Rule and SNS ntification for restrict_incoming_traffic_config_rule - in place of automatic remediation
