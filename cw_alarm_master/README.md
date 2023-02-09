@@ -10,12 +10,12 @@ Terraform module which creates Cloudwatch resources on AWS. Fields for Loggroup 
 module "log_metric_filter" {
   source  = "./modules/log-metric-filter"
 
-  log_group_name = "zuora-test"
+  log_group_name = "-test"
 
   name    = "error-metric"
   pattern = "ERROR"
 
-  metric_transformation_namespace = "zuora"
+  metric_transformation_namespace = ""
   metric_transformation_name      = "ErrorCount"
   
     depends_on = [
@@ -32,7 +32,7 @@ Read [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/la
 module "log_group" {
   source  = "./modules/log-group"
 
-  name              = "zuora-test"
+  name              = "-test"
   retention_in_days = 365
 }
 ```
@@ -43,8 +43,8 @@ module "log_group" {
 module "log_stream" {
   source  = "./modules/log-stream"
 
-  name           = "zuora-stream"
-  log_group_name = "zuora-test"
+  name           = "-stream"
+  log_group_name = "-test"
 
     depends_on = [
     module.log_group
@@ -58,19 +58,19 @@ module "log_stream" {
 module "metric_alarm" {
   source  = "./modules/metric-alarm"
 
-  alarm_name          = "zuora-errors"
-  alarm_description   = "zuora alarms"
+  alarm_name          = "-errors"
+  alarm_description   = " alarms"
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 1
   threshold           = 1
   period              = 60
   unit                = "Count"
 
-  namespace   = "zuora"
+  namespace   = ""
   metric_name = "ErrorCount"
   statistic = "Maximum"
 
-  alarm_actions = ["arn:aws:sns:${data.aws_region.current.name}:${var.account_id}:zuora-test"]
+  alarm_actions = ["arn:aws:sns:${data.aws_region.current.name}:${var.account_id}:-test"]
 }
 ```
 
@@ -81,10 +81,11 @@ Check out [list of all AWS services that publish CloudWatch metrics](https://doc
 ```hcl
 module "cis_alarms" {
   source  = "./modules/cis-alarms"
-  namespace = "Zuora-cw-alarm"
+  namespace = "-cw-alarm"
 
-  log_group_name = "zuora-test"
-  alarm_actions  = ["arn:aws:sns:${data.aws_region.current.name}:${var.account_id}:zuora-test"]
+  log_group_name = "-test"
+  alarm_actions  = ["arn:aws:sns:${data.aws_region.current.name}:${var.account_id}:
+  -test"]
 
       depends_on = [
     module.log_group
@@ -99,7 +100,7 @@ AWS CloudTrail normally publishes logs into AWS CloudWatch Logs. This module cre
 ```hcl
 module "sns_topic" {
     source = "./modules/sns-topic"
-    sns_name = "zuora-test"
+    sns_name = "-test"
     account_id = "955305841756"
     protocol = "email"
     email = "UPDATE"
