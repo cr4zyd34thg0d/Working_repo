@@ -1,6 +1,6 @@
 # CT_R7
 
-Zuora template for setting up cloudtrail with an S3 bucket, SNS topic, and SQS to setup for Rapid7 log pull.
+template for setting up cloudtrail with an S3 bucket, SNS topic, and SQS to setup for Rapid7 log pull.
 
 ## About This Module
 
@@ -24,12 +24,12 @@ This Module implements and enables a Cloudtrail at the root level. This code set
 
 module "cloudtrail" {
   source               = "./modules/cloud-trail"
-  terraform_queue_name = "zuora_r7_queue"
-  sns_topic_name       = "zuora_r7_topic"
+  terraform_queue_name = "r7_queue"
+  sns_topic_name       = "r7_topic"
   sns_protocol         = "sqs"
-  bucket_name          = "zuora-cloudtrail-r7-logs"
+  bucket_name          = "cloudtrail-r7-logs"
   trail_name           = "EventsTrail"
-  log_group_name       = "zuora-logs"
+  log_group_name       = "logs"
   tags = {
     "Workload Name"         = "" #Update with tag name (add confluence link to mandatory tags)
     "Application Name"      = "" #Update with tag name (add confluence link to mandatory tags)
