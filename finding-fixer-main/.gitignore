@@ -1,0 +1,7 @@
+set_api_key.sh
+.DS_Store
+**/.DS_Store
+__pycache__/
+**.pyc
+**/__pycache__
+__pycache__/file_lib.cpython-311.pyc
